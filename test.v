@@ -8,10 +8,16 @@ module test (input a, b, output out);
         .y(y)
     );
 
-    assign out = ~y;
+    assign out = y;
 endmodule
 
 module my_xor (input a, b, output y);
     wire x = a ~& b;
     assign y = (a ~& x) ~& (x ~& b);
 endmodule
+
+module halfadder (input a, b, output carry, sum);
+    assign carry = a & b;
+    assign sum = a ^ b;
+endmodule
+
