@@ -1,3 +1,4 @@
 module test (input a, b, output y);
-  assign y = a & b;
+  wire x = a ~& b;
+  assign y = (a ~& x) ~& (x ~& b);
 endmodule
