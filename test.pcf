@@ -1,3 +1,6 @@
-set_io a 1
-set_io b 10
-set_io y 11
+set_io a 44
+set_io b 45
+set_io carry 99
+set_io sum 98
+set_io oa 97
+set_io ob 96s
