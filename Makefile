@@ -1,5 +1,5 @@
 PROJ = test
-TOP = halfadder
+TOP = alu
 
 all :
 	yosys -p 'read_verilog $(PROJ).v; synth_ice40 -blif $(PROJ).blif -top $(TOP)'
@@ -21,3 +21,6 @@ program :
 	iceprog $(PROJ).bin
 
 prog : program
+
+show :
+	yosys -p 'read_verilog test.v; show'

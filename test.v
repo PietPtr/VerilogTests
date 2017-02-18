@@ -1,42 +1,72 @@
-// iverilog -o test test.v test_tb.v && vvp test
+module alu (input zx, nx, zy, ny, f, no, input[3:0] x, y, output o1, o2, o3, o4);
+    wire[3:0] _x = 8; // temp inputs while stuff isn't soldered yet
+    wire[3:0] _y = 7;
+    wire _zx = 0;
+    wire _nx = 1;
+    wire _zy = 0;
+    wire _ny = 0;
+    wire _f  = 1;
+    wire _no = 1;
+    wire[3:0] zxr;
+    wire[3:0] nxr;
+    wire[3:0] zyr;
+    wire[3:0] nyr;
+    wire[3:0] fr;
+    wire[3:0] nr;
+    wire[3:0] out;
 
-module test (input a, b, output out);
-    wire [0:0] y;
+    always @(_zx or _x)
+    begin
+        if (_zx == 1)
+            zxr = 0;
+        else
+            zxr = _x;
+    end
 
-    assign out = y;
-endmodule
+    always @(_zy or _y)
+    begin
+        if (_zy == 1)
+            zyr = 0;
+        else
+            zyr = _y;
+    end
 
-module halfadder (input a, b, output carry, sum, oa, ob);
-    assign a = oa;
-    assign b = ob;
-    assign carry = a & b;
-    assign sum = a ^ b;
-endmodule
+    always @(_nx or zxr)
+    begin
+        if (_nx == 1)
+            nxr = ~zxr;
+        else
+            nxr = zxr;
+    end
 
-module fulladder (input a, b, c, output carry, sum);
-    wire carry0;
-    wire carry1;
-    wire sum0;
-    wire sum1;
+    always @(_ny or zyr)
+    begin
+        if (_ny == 1)
+            nyr = ~zyr;
+        else
+            nyr = zyr;
+    end
 
-    halfadder h0 (
-        .a(a),a
-        .b(b),
-        .carry(carry0),
-        .sum(sum0)
-    );
+    always @(_f or nyr or nxr)
+    begin
+        if (_f == 1)
+            fr = nyr + nxr;
+        else
+            fr = nyr & nxr;
+    end
 
-    halfadder h1 (
-        .a(sum0),
-        .b(c),
-        .carry(carry1),
-        .sum(sum1)
-    );
+    always @(_no or fr)
+    begin
+        if (_no == 1)
+            out = ~fr;
+        else
+            out = fr;
+    end
 
-    assign carry = carry0 | carry1;
-    assign sum = sum1;
-endmodule
+    wire[3:0] r = out;
 
-module alu (input a[4], b[4], output r[4]);
-    assign r = a;
+    assign o1 = r[0];
+    assign o2 = r[1];
+    assign o3 = r[2];
+    assign o4 = r[3];
 endmodule

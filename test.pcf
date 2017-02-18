@@ -1,6 +1,4 @@
-set_io a 44
-set_io b 45
-set_io carry 99
-set_io sum 98
-set_io oa 97
-set_io ob 96s
+set_io o1 99
+set_io o2 98
+set_io o3 97
+set_io o4 96
