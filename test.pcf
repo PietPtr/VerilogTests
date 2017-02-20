@@ -2,3 +2,17 @@ set_io o1 99
 set_io o2 98
 set_io o3 97
 set_io o4 96
+set_io x[0] 48
+set_io x[1] 47
+set_io x[2] 45
+set_io x[3] 44
+set_io y[0] 62
+set_io y[1] 61
+set_io y[2] 60
+set_io y[3] 56
+set_io zx 119
+set_io nx 118
+set_io zy 117
+set_io ny 116
+set_io f 115
+set_io no 114

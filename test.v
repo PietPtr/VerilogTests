@@ -1,12 +1,12 @@
 module alu (input zx, nx, zy, ny, f, no, input[3:0] x, y, output o1, o2, o3, o4);
-    wire[3:0] _x = 8; // temp inputs while stuff isn't soldered yet
-    wire[3:0] _y = 7;
-    wire _zx = 0;
-    wire _nx = 1;
-    wire _zy = 0;
-    wire _ny = 0;
-    wire _f  = 1;
-    wire _no = 1;
+    // wire[3:0] x = 8; // temp inputs while stuff isn't soldered yet
+    // wire[3:0] y = 7;
+    // wire zx = 0;
+    // wire nx = 1;
+    // wire zy = 0;
+    // wire ny = 0;
+    // wire f  = 1;
+    // wire no = 1;
     wire[3:0] zxr;
     wire[3:0] nxr;
     wire[3:0] zyr;
@@ -15,49 +15,49 @@ module alu (input zx, nx, zy, ny, f, no, input[3:0] x, y, output o1, o2, o3, o4)
     wire[3:0] nr;
     wire[3:0] out;
 
-    always @(_zx or _x)
+    always @(zx or x)
     begin
-        if (_zx == 1)
+        if (zx == 1)
             zxr = 0;
         else
-            zxr = _x;
+            zxr = x;
     end
 
-    always @(_zy or _y)
+    always @(zy or y)
     begin
-        if (_zy == 1)
+        if (zy == 1)
             zyr = 0;
         else
-            zyr = _y;
+            zyr = y;
     end
 
-    always @(_nx or zxr)
+    always @(nx or zxr)
     begin
-        if (_nx == 1)
+        if (nx == 1)
             nxr = ~zxr;
         else
             nxr = zxr;
     end
 
-    always @(_ny or zyr)
+    always @(ny or zyr)
     begin
-        if (_ny == 1)
+        if (ny == 1)
             nyr = ~zyr;
         else
             nyr = zyr;
     end
 
-    always @(_f or nyr or nxr)
+    always @(f or nyr or nxr)
     begin
-        if (_f == 1)
+        if (f == 1)
             fr = nyr + nxr;
         else
             fr = nyr & nxr;
     end
 
-    always @(_no or fr)
+    always @(no or fr)
     begin
-        if (_no == 1)
+        if (no == 1)
             out = ~fr;
         else
             out = fr;
