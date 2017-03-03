@@ -1,12 +1,4 @@
 module alu (input zx, nx, zy, ny, f, no, input[3:0] x, y, output o1, o2, o3, o4);
-    // wire[3:0] x = 8; // temp inputs while stuff isn't soldered yet
-    // wire[3:0] y = 7;
-    // wire zx = 0;
-    // wire nx = 1;
-    // wire zy = 0;
-    // wire ny = 0;
-    // wire f  = 1;
-    // wire no = 1;
     wire[3:0] zxr;
     wire[3:0] nxr;
     wire[3:0] zyr;
