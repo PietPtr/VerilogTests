@@ -18,4 +18,7 @@ program :
 prog : program
 
 show :
-	yosys -p 'read_verilog test.v; show'
+	yosys -p 'read_verilog $(PROJ).v; show'
+
+clean :
+	-rm *.asc *.bin *.blif

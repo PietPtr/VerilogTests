@@ -4,3 +4,9 @@
 !*/
 .gitignore
 !Makefile
+
+*.asc
+*.bin
+*.blif
+*.cf
+*test

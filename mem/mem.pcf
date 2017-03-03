@@ -1,0 +1,18 @@
+set_io o1 99
+set_io o2 98
+set_io o3 97
+set_io o4 96
+set_io o5 95
+
+set_io in[0] 44
+set_io in[1] 45
+set_io in[2] 47
+set_io in[3] 48
+
+set_io addr[0] 119
+set_io addr[1] 118
+set_io addr[2] 117
+set_io addr[3] 116
+
+set_io load 62
+set_io clock 21
