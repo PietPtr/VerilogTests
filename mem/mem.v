@@ -1,6 +1,6 @@
 // 4 bit RAM module, 16 addresses storing 4 bit values.
 module mem (input load, clock, input[3:0] in, addr, output o1, o2, o3, o4, o5);
-    reg[3:0] memory[0:15];
+    reg[3:0] memory[15:0];
 
     always @ (posedge clock)
     if (load) begin
