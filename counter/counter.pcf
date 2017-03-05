@@ -13,4 +13,4 @@ set_io inc 60
 set_io load 61
 set_io reset 62
 
-set_io clock 119
+set_io clock 21
